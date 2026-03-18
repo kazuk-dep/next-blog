@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 復習用ブログアプリ（開発中）
 
-## Getting Started
+学習内容を記録し、後から見返しやすくするためのブログアプリです。  
+現在は Next.js を用いたブログ機能の基礎実装を中心に開発しています。
 
-First, run the development server:
+---
+
+## 概要
+
+エンジニア学習においてアウトプットの重要性が言われる一方で、
+
+- 公開のハードルが高い
+- 環境構築が手間
+- 継続的に振り返る仕組みがない
+
+といった課題を感じ、このアプリを作成しています。
+
+公開前提ではなく、  
+**自分の中で完結できるアウトプット環境の構築**を目的としています。
+
+---
+
+## 現在の実装状況
+
+
+- コンポーネントによる画面構成
+- Prismaを用いたデータベース操作
+- リレーション設計
+
+---
+
+## 使用技術
+
+- Next.js
+- TypeScript
+- Prisma
+- SQLite
+
+---
+
+## アプリ構成（イメージ）
+
+フロントエンドからAPI（またはServer Action）を通して  
+データベースに接続する構成です。
+
+### データの流れ（例：記事作成）
+
+1. フォームに入力
+2. データ送信
+3. バリデーション処理
+4. Prisma経由でDBに保存
+5. 一覧・詳細画面に反映
+
+---
+
+## データベース設計
+
+### User
+- id
+- name
+- email
+- password
+- createdAt
+- updatedAt
+
+### Post
+- id
+- title
+- content
+- authorId
+- createdAt
+- updatedAt
+
+UserとPostは1対多の関係です。
+
+---
+
+## 今後実装予定
+
+- 記事一覧表示
+- 記事詳細表示
+- 記事作成（フォーム）
+- 復習機能
+- 次の日 / 3日後 / 1週間後に再表示
+- 理解度評価（○ / △ / ×）
+- 評価に応じた表示頻度の調整
+
+---
+
+## 工夫している点
+
+- データの流れを意識して設計していること
+- 後から機能追加しやすい構成を意識していること
+- 「動けばいい」ではなく、読みやすさを意識していること
+
+---
+
+## 学んだこと
+
+- Next.jsにおける画面構成
+- Prismaによるデータベース操作の基本
+- CRUDにおけるデータの流れ
+- フロントエンドとバックエンドのつながり
+
+---
+
+## セットアップ
 
 ```bash
+git clone https://github.com/kazuk-dep/next-blog
+cd next-blog
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
